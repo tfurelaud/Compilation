@@ -1,0 +1,417 @@
+*** Fichier data/progr9.lea
+type chaine=string;
+entier=integer;
+booleen=boolean;
+named1=chaine;
+Months=(January,February,March,April,May,June,July,August,September,October,November,December);
+DaysOfWeek=(Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday);
+range1=64..81;
+range2=Monday..Friday;
+table1=array[1..32]ofinteger;
+table2=array[range1]ofinteger;
+table3=array[range2]ofinteger;
+table4=array[1..32]ofarray[DaysOfWeek]ofinteger;
+ptr1=^integer;
+ptr2=^array[1..32]ofarray[DaysOfWeek]ofinteger;
+var x,y,z:integer;
+b:boolean;
+z2:array[1..32]ofinteger;
+k:array[range2]ofinteger;
+l:array[range2]ofboolean;
+m2:array[Monday..Thursday]ofboolean;
+p:ptr1;
+m:Months;
+r1:range1;
+r2:range2;
+month:Months;
+functiongoo(i:integer,j:integer):boolean;
+functionfoo(i:integer,j:integer):^booleanvar result:^boolean;
+begin
+newresult;
+result^=goo(i,j);
+returnEnregistre : a -> goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))
+result;
+end
+functiongoo(i:integer,j:integer):booleanbegin
+return(i+j);
+end
+begin
+b=false;
+lEnregistre : a -> NodeLiteral#false:TypeBoolean#
+=l;
+bEnregistre : a -> NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+=foo(3,7)^;
+bEnregistre : a -> NodePtrAccess(foo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)))
+=goo(3,7);
+z2Enregistre : a -> goo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#))
+[1]=36;
+xEnregistre : a -> NodeLiteral#36:TypeInt_36#
+=z2[1];
+bEnregistre : a -> NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#)
+=goo(z2[1],1);
+ifEnregistre : a -> goo_NodeCallFct(NodeList(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#1:TypeInt_1#))
+(l[Monday])thenx=1;
+ifEnregistre : a -> NodeLiteral#1:TypeInt_1#
+(l[Monday])thenx=1;
+elseEnregistre : a -> NodeLiteral#1:TypeInt_1#
+x=2;
+ifEnregistre : a -> NodeLiteral#2:TypeInt_2#
+(z2[7])thenx=1;
+whileEnregistre : a -> NodeLiteral#1:TypeInt_1#
+(z2[7])do
+x=1;
+whileEnregistre : a -> NodeLiteral#1:TypeInt_1#
+(z2[7])do
+begin
+if(l[Monday])thenx=1;
+elseEnregistre : a -> NodeLiteral#1:TypeInt_1#
+x=2;
+printlnEnregistre : a -> NodeLiteral#2:TypeInt_2#
+x;
+readlny;
+end
+switch(month)begin
+caseMarch,April,May:println("spring");
+caseJune,July,August:println("summer");
+caseSeptember,October,November:println("autumn");
+caseFebruary,December,January:println("winter");
+default:println("none");
+end
+x=-(36+45/7);
+pEnregistre : a -> NodeOp(NodeOp(NodeLiteral#36:TypeInt_36#, NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#)))
+=null;
+newp;
+p^=36;
+pEnregistre : a -> NodeLiteral#36:TypeInt_36#
+^=false;
+xEnregistre : a -> NodeLiteral#false:TypeBoolean#
+=p^;
+disposeEnregistre : a -> NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#)
+p;
+end
+*** Analyse syntaxique ok
+NodeList(NodeList(NodeId#chaine:TypeString#, NodeId#entier:TypeInt_null#, NodeId#booleen:TypeBoolean#, NodeId#named1:TypeString#, NodeId#Months:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#, NodeId#DaysOfWeek:TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1#, NodeId#range1:TypeArrayRange[TypeInt_64..TypeInt_81]#, NodeId#range2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#, NodeId#table1:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeId#table2:TypeArray(TypeArrayRange[TypeInt_64..TypeInt_81], TypeInt_null)#, NodeId#table3:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#, NodeId#table4:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeArray(TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1, TypeInt_null))#, NodeId#ptr1:TypePointer(TypeInt_null)#, NodeId#ptr2:TypePointer(TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeArray(TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1, TypeInt_null)))#), NodeList(NodeList(NodeId#x:TypeInt_null#, NodeId#y:TypeInt_null#, NodeId#z:TypeInt_null#), NodeList(NodeId#b:TypeBoolean#), NodeList(NodeId#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#), NodeList(NodeId#k:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#), NodeList(NodeId#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#), NodeList(NodeId#m2:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=4], TypeBoolean)#), NodeList(NodeId#p:TypePointer(TypeInt_null)#), NodeList(NodeId#m:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#), NodeList(NodeId#r1:TypeArrayRange[TypeInt_64..TypeInt_81]#), NodeList(NodeId#r2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#), NodeList(NodeId#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#)), NodeList(NodeId#goo:([i:TypeInt_null], [j:TypeInt_null]) -> TypeBoolean Defined: false Name: goo#, NodeList(NodeList(NodeList(NodeId#result:TypePointer(TypeBoolean)#)), NodeList(NodeNew(NodeLiteral#result:TypePointer(TypeBoolean)#), NodeAssign(NodePtrAccess(NodeLiteral#result:TypePointer(TypeBoolean)#), goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))), NodeReturn(NodeLiteral#result:TypePointer(TypeBoolean)#))), NodeList(NodeList(NodeReturn(NodeOp(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))))), NodeList(NodeAssign(NodeLiteral#b:TypeBoolean#, NodeLiteral#false:TypeBoolean#), NodeAssign(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#), NodeAssign(NodeLiteral#b:TypeBoolean#, NodePtrAccess(foo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)))), NodeAssign(NodeLiteral#b:TypeBoolean#, goo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#))), NodeAssign(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#36:TypeInt_36#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#)), NodeAssign(NodeLiteral#b:TypeBoolean#, goo_NodeCallFct(NodeList(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#1:TypeInt_1#))), NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)), NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), NodeIf(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)), NodeWhile(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)), NodeWhile(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeList(NodeList(NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), println_NodeCallFct(NodeList(NodeLiteral#x:TypeInt_null#)), readln_NodeCallFct(NodeList(NodeLiteral#y:TypeInt_null#))))), NodeSwitch(NodeLiteral#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#, NodeCaseList(NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"spring":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"summer":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"autumn":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"winter":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"none":TypeString#))))), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeOp(NodeOp(NodeLiteral#36:TypeInt_36#, NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#)))), NodeAssign(NodeLiteral#p:TypePointer(TypeInt_null)#, NodeLiteral#null:TypePointer(TypeInt_null)#), NodeNew(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeAssign(NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeLiteral#36:TypeInt_36#), NodeAssign(NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeLiteral#false:TypeBoolean#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#)), NodeDispose(NodeLiteral#p:TypePointer(TypeInt_null)#)))
+NodeList(NodeId#chaine:TypeString#, NodeId#entier:TypeInt_null#, NodeId#booleen:TypeBoolean#, NodeId#named1:TypeString#, NodeId#Months:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#, NodeId#DaysOfWeek:TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1#, NodeId#range1:TypeArrayRange[TypeInt_64..TypeInt_81]#, NodeId#range2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#, NodeId#table1:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeId#table2:TypeArray(TypeArrayRange[TypeInt_64..TypeInt_81], TypeInt_null)#, NodeId#table3:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#, NodeId#table4:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeArray(TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1, TypeInt_null))#, NodeId#ptr1:TypePointer(TypeInt_null)#, NodeId#ptr2:TypePointer(TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeArray(TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1, TypeInt_null)))#)
+NodeId#chaine:TypeString#
+NodeId#entier:TypeInt_null#
+NodeId#booleen:TypeBoolean#
+NodeId#named1:TypeString#
+NodeId#Months:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#
+NodeId#DaysOfWeek:TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1#
+NodeId#range1:TypeArrayRange[TypeInt_64..TypeInt_81]#
+NodeId#range2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#
+NodeId#table1:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeId#table2:TypeArray(TypeArrayRange[TypeInt_64..TypeInt_81], TypeInt_null)#
+NodeId#table3:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#
+NodeId#table4:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeArray(TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1, TypeInt_null))#
+NodeId#ptr1:TypePointer(TypeInt_null)#
+NodeId#ptr2:TypePointer(TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeArray(TypeEnumRange[TypeItemEnum@DaysOfWeek=0..TypeItemEnum@DaysOfWeek=6]_1, TypeInt_null)))#
+NodeList(NodeList(NodeId#x:TypeInt_null#, NodeId#y:TypeInt_null#, NodeId#z:TypeInt_null#), NodeList(NodeId#b:TypeBoolean#), NodeList(NodeId#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#), NodeList(NodeId#k:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#), NodeList(NodeId#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#), NodeList(NodeId#m2:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=4], TypeBoolean)#), NodeList(NodeId#p:TypePointer(TypeInt_null)#), NodeList(NodeId#m:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#), NodeList(NodeId#r1:TypeArrayRange[TypeInt_64..TypeInt_81]#), NodeList(NodeId#r2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#), NodeList(NodeId#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#))
+NodeList(NodeId#x:TypeInt_null#, NodeId#y:TypeInt_null#, NodeId#z:TypeInt_null#)
+NodeId#x:TypeInt_null#
+NodeId#y:TypeInt_null#
+NodeId#z:TypeInt_null#
+NodeList(NodeId#b:TypeBoolean#)
+NodeId#b:TypeBoolean#
+NodeList(NodeId#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#)
+NodeId#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeList(NodeId#k:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#)
+NodeId#k:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeInt_null)#
+NodeList(NodeId#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#)
+NodeId#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+NodeList(NodeId#m2:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=4], TypeBoolean)#)
+NodeId#m2:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=4], TypeBoolean)#
+NodeList(NodeId#p:TypePointer(TypeInt_null)#)
+NodeId#p:TypePointer(TypeInt_null)#
+NodeList(NodeId#m:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#)
+NodeId#m:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#
+NodeList(NodeId#r1:TypeArrayRange[TypeInt_64..TypeInt_81]#)
+NodeId#r1:TypeArrayRange[TypeInt_64..TypeInt_81]#
+NodeList(NodeId#r2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#)
+NodeId#r2:TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5]#
+NodeList(NodeId#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#)
+NodeId#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#
+NodeList(NodeId#goo:([i:TypeInt_null], [j:TypeInt_null]) -> TypeBoolean Defined: false Name: goo#, NodeList(NodeList(NodeList(NodeId#result:TypePointer(TypeBoolean)#)), NodeList(NodeNew(NodeLiteral#result:TypePointer(TypeBoolean)#), NodeAssign(NodePtrAccess(NodeLiteral#result:TypePointer(TypeBoolean)#), goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))), NodeReturn(NodeLiteral#result:TypePointer(TypeBoolean)#))), NodeList(NodeList(NodeReturn(NodeOp(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#)))))
+NodeId#goo:([i:TypeInt_null], [j:TypeInt_null]) -> TypeBoolean Defined: false Name: goo#
+NodeList(NodeList(NodeList(NodeId#result:TypePointer(TypeBoolean)#)), NodeList(NodeNew(NodeLiteral#result:TypePointer(TypeBoolean)#), NodeAssign(NodePtrAccess(NodeLiteral#result:TypePointer(TypeBoolean)#), goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))), NodeReturn(NodeLiteral#result:TypePointer(TypeBoolean)#)))
+NodeList(NodeList(NodeId#result:TypePointer(TypeBoolean)#))
+NodeList(NodeId#result:TypePointer(TypeBoolean)#)
+NodeId#result:TypePointer(TypeBoolean)#
+NodeList(NodeNew(NodeLiteral#result:TypePointer(TypeBoolean)#), NodeAssign(NodePtrAccess(NodeLiteral#result:TypePointer(TypeBoolean)#), goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))), NodeReturn(NodeLiteral#result:TypePointer(TypeBoolean)#))
+NodeNew(NodeLiteral#result:TypePointer(TypeBoolean)#)
+NodeLiteral#result:TypePointer(TypeBoolean)#
+NodeAssign(NodePtrAccess(NodeLiteral#result:TypePointer(TypeBoolean)#), goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#)))
+NodePtrAccess(NodeLiteral#result:TypePointer(TypeBoolean)#)
+NodeLiteral#result:TypePointer(TypeBoolean)#
+goo_NodeCallFct(NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))
+NodeList(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#)
+NodeLiteral#i:TypeInt_null#
+NodeLiteral#j:TypeInt_null#
+NodeReturn(NodeLiteral#result:TypePointer(TypeBoolean)#)
+NodeLiteral#result:TypePointer(TypeBoolean)#
+NodeList(NodeList(NodeReturn(NodeOp(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))))
+NodeList(NodeReturn(NodeOp(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#)))
+NodeReturn(NodeOp(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#))
+NodeOp(NodeLiteral#i:TypeInt_null#, NodeLiteral#j:TypeInt_null#)
+NodeLiteral#i:TypeInt_null#
+NodeLiteral#j:TypeInt_null#
+NodeList(NodeAssign(NodeLiteral#b:TypeBoolean#, NodeLiteral#false:TypeBoolean#), NodeAssign(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#), NodeAssign(NodeLiteral#b:TypeBoolean#, NodePtrAccess(foo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)))), NodeAssign(NodeLiteral#b:TypeBoolean#, goo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#))), NodeAssign(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#36:TypeInt_36#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#)), NodeAssign(NodeLiteral#b:TypeBoolean#, goo_NodeCallFct(NodeList(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#1:TypeInt_1#))), NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)), NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), NodeIf(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)), NodeWhile(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)), NodeWhile(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeList(NodeList(NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), println_NodeCallFct(NodeList(NodeLiteral#x:TypeInt_null#)), readln_NodeCallFct(NodeList(NodeLiteral#y:TypeInt_null#))))), NodeSwitch(NodeLiteral#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#, NodeCaseList(NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"spring":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"summer":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"autumn":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"winter":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"none":TypeString#))))), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeOp(NodeOp(NodeLiteral#36:TypeInt_36#, NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#)))), NodeAssign(NodeLiteral#p:TypePointer(TypeInt_null)#, NodeLiteral#null:TypePointer(TypeInt_null)#), NodeNew(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeAssign(NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeLiteral#36:TypeInt_36#), NodeAssign(NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeLiteral#false:TypeBoolean#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#)), NodeDispose(NodeLiteral#p:TypePointer(TypeInt_null)#))
+NodeAssign(NodeLiteral#b:TypeBoolean#, NodeLiteral#false:TypeBoolean#)
+NodeLiteral#b:TypeBoolean#
+NodeLiteral#false:TypeBoolean#
+NodeAssign(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#)
+NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+NodeAssign(NodeLiteral#b:TypeBoolean#, NodePtrAccess(foo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#))))
+NodeLiteral#b:TypeBoolean#
+NodePtrAccess(foo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)))
+foo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#))
+NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)
+NodeLiteral#3:TypeInt_3#
+NodeLiteral#7:TypeInt_7#
+NodeAssign(NodeLiteral#b:TypeBoolean#, goo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)))
+NodeLiteral#b:TypeBoolean#
+goo_NodeCallFct(NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#))
+NodeList(NodeLiteral#3:TypeInt_3#, NodeLiteral#7:TypeInt_7#)
+NodeLiteral#3:TypeInt_3#
+NodeLiteral#7:TypeInt_7#
+NodeAssign(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#36:TypeInt_36#)
+NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeLiteral#1:TypeInt_1#
+NodeLiteral#36:TypeInt_36#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#))
+NodeLiteral#x:TypeInt_null#
+NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeLiteral#1:TypeInt_1#
+NodeAssign(NodeLiteral#b:TypeBoolean#, goo_NodeCallFct(NodeList(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#1:TypeInt_1#)))
+NodeLiteral#b:TypeBoolean#
+goo_NodeCallFct(NodeList(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#1:TypeInt_1#))
+NodeList(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#), NodeLiteral#1:TypeInt_1#)
+NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeLiteral#1:TypeInt_1#
+NodeLiteral#1:TypeInt_1#
+NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#))
+NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#)
+NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#1:TypeInt_1#
+NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#))
+NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#)
+NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#1:TypeInt_1#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#2:TypeInt_2#
+NodeIf(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#))
+NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#)
+NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeLiteral#7:TypeInt_7#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#1:TypeInt_1#
+NodeWhile(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#))
+NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#)
+NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeLiteral#7:TypeInt_7#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#1:TypeInt_1#
+NodeWhile(NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#), NodeList(NodeList(NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), println_NodeCallFct(NodeList(NodeLiteral#x:TypeInt_null#)), readln_NodeCallFct(NodeList(NodeLiteral#y:TypeInt_null#)))))
+NodeArrayAccess(NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#, NodeLiteral#7:TypeInt_7#)
+NodeLiteral#z2:TypeArray(TypeArrayRange[TypeInt_1..TypeInt_32], TypeInt_null)#
+NodeLiteral#7:TypeInt_7#
+NodeList(NodeList(NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), println_NodeCallFct(NodeList(NodeLiteral#x:TypeInt_null#)), readln_NodeCallFct(NodeList(NodeLiteral#y:TypeInt_null#))))
+NodeList(NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)), println_NodeCallFct(NodeList(NodeLiteral#x:TypeInt_null#)), readln_NodeCallFct(NodeList(NodeLiteral#y:TypeInt_null#)))
+NodeIf(NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#), NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#))
+NodeArrayAccess(NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#, NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#)
+NodeLiteral#l:TypeArray(TypeArrayRange[TypeItemEnum@DaysOfWeek=1..TypeItemEnum@DaysOfWeek=5], TypeBoolean)#
+NodeLiteral#Monday:TypeItemEnum@DaysOfWeek=1#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#1:TypeInt_1#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#1:TypeInt_1#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeLiteral#2:TypeInt_2#)
+NodeLiteral#x:TypeInt_null#
+NodeLiteral#2:TypeInt_2#
+println_NodeCallFct(NodeList(NodeLiteral#x:TypeInt_null#))
+NodeList(NodeLiteral#x:TypeInt_null#)
+NodeLiteral#x:TypeInt_null#
+readln_NodeCallFct(NodeList(NodeLiteral#y:TypeInt_null#))
+NodeList(NodeLiteral#y:TypeInt_null#)
+NodeLiteral#y:TypeInt_null#
+NodeSwitch(NodeLiteral#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#, NodeCaseList(NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"spring":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"summer":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"autumn":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"winter":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"none":TypeString#)))))
+NodeLiteral#month:TypeEnumRange[TypeItemEnum@Months=0..TypeItemEnum@Months=11]_0#
+NodeCaseList(NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"spring":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"summer":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"autumn":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"winter":TypeString#))), NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"none":TypeString#))))
+NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"spring":TypeString#)))
+println_NodeCallFct(NodeList(NodeLiteral#"spring":TypeString#))
+NodeList(NodeLiteral#"spring":TypeString#)
+NodeLiteral#"spring":TypeString#
+NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"summer":TypeString#)))
+println_NodeCallFct(NodeList(NodeLiteral#"summer":TypeString#))
+NodeList(NodeLiteral#"summer":TypeString#)
+NodeLiteral#"summer":TypeString#
+NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"autumn":TypeString#)))
+println_NodeCallFct(NodeList(NodeLiteral#"autumn":TypeString#))
+NodeList(NodeLiteral#"autumn":TypeString#)
+NodeLiteral#"autumn":TypeString#
+NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"winter":TypeString#)))
+println_NodeCallFct(NodeList(NodeLiteral#"winter":TypeString#))
+NodeList(NodeLiteral#"winter":TypeString#)
+NodeLiteral#"winter":TypeString#
+NodeCase(println_NodeCallFct(NodeList(NodeLiteral#"none":TypeString#)))
+println_NodeCallFct(NodeList(NodeLiteral#"none":TypeString#))
+NodeList(NodeLiteral#"none":TypeString#)
+NodeLiteral#"none":TypeString#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodeOp(NodeOp(NodeLiteral#36:TypeInt_36#, NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#))))
+NodeLiteral#x:TypeInt_null#
+NodeOp(NodeOp(NodeLiteral#36:TypeInt_36#, NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#)))
+NodeOp(NodeLiteral#36:TypeInt_36#, NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#))
+NodeLiteral#36:TypeInt_36#
+NodeOp(NodeLiteral#45:TypeInt_45#, NodeLiteral#7:TypeInt_7#)
+NodeLiteral#45:TypeInt_45#
+NodeLiteral#7:TypeInt_7#
+NodeAssign(NodeLiteral#p:TypePointer(TypeInt_null)#, NodeLiteral#null:TypePointer(TypeInt_null)#)
+NodeLiteral#p:TypePointer(TypeInt_null)#
+NodeLiteral#null:TypePointer(TypeInt_null)#
+NodeNew(NodeLiteral#p:TypePointer(TypeInt_null)#)
+NodeLiteral#p:TypePointer(TypeInt_null)#
+NodeAssign(NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeLiteral#36:TypeInt_36#)
+NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#)
+NodeLiteral#p:TypePointer(TypeInt_null)#
+NodeLiteral#36:TypeInt_36#
+NodeAssign(NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#), NodeLiteral#false:TypeBoolean#)
+NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#)
+NodeLiteral#p:TypePointer(TypeInt_null)#
+NodeLiteral#false:TypeBoolean#
+NodeAssign(NodeLiteral#x:TypeInt_null#, NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#))
+NodeLiteral#x:TypeInt_null#
+NodePtrAccess(NodeLiteral#p:TypePointer(TypeInt_null)#)
+NodeLiteral#p:TypePointer(TypeInt_null)#
+NodeDispose(NodeLiteral#p:TypePointer(TypeInt_null)#)
+NodeLiteral#p:TypePointer(TypeInt_null)#
+dot -Tpng -o data/progr9.png data/progr9.dot
+--- CheckType NodeList
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeList
+--- CheckType NodeList
+--- CheckType NodeId
+--- CheckType NodeList
+--- CheckType NodeNew
+--- CheckType NodeAssign
+--- CheckType NodePtrAccess
+--- CheckType NodeCallFct
+--- CheckType NodeLiteral
+--- CheckType NodeLiteral
+--- CheckType NodeReturn
+--- CheckType NodeList
+--- CheckType NodeList
+--- CheckType NodeReturn
+--- CheckType NodeList
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeLiteral
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeLiteral
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodePtrAccess
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeCallFct
+--- CheckType NodeLiteral
+--- CheckType NodeLiteral
+--- CheckType NodeAssign
+--- CheckType NodeArrayAccess
+--- CheckType NodeLiteral
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeArrayAccess
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeCallFct
+--- CheckType NodeArrayAccess
+--- CheckType NodeLiteral
+--- CheckType NodeIf
+--- CheckType NodeIf
+--- CheckType NodeIf
+--- CheckType NodeWhile
+--- CheckType NodeArrayAccess
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeLiteral
+--- CheckType NodeWhile
+--- CheckType NodeArrayAccess
+--- CheckType NodeList
+--- CheckType NodeList
+--- CheckType NodeIf
+--- CheckType NodeCallFct
+--- CheckType NodeLiteral
+--- CheckType NodeCallFct
+--- CheckType NodeLiteral
+--- CheckType NodeSwitch
+--- CheckType NodeLiteral
+--- CheckType NodeCaseList
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeOp
+--- CheckType NodeAssign
+--- CheckType NodeLiteral
+--- CheckType NodeLiteral
+--- CheckType NodeNew
+--- CheckType NodeAssign
+--- CheckType NodePtrAccess
+--- CheckType NodeLiteral
+--- CheckType NodeAssign
+--- CheckType NodePtrAccess
+--- CheckType NodeLiteral
+*** Erreur de typage

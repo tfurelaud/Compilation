@@ -1,0 +1,15 @@
+**** Projet de Compilation ****
+
+- Pierre CAYROL
+- Titien CUBILIER
+- Thomas FURELAUD
+- Jon    STARK
+
+
+- Implémentation du lexer : Pierre / Thomas / Jon / Titien
+- Implémentation de la grammaire : Pierre / Thomas / Jon / Titien
+- Implémentation du package "Environment" : Pierre / Thomas
+- Code intermédiaire : Pierre / Thomas / Jon / Titien
+- Rapport : Pierre / Thomas / Jon / Titien
+
+
